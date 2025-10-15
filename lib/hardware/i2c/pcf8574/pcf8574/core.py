@@ -59,3 +59,5 @@ if __name__ == "__main__":
     PCF8574.MOCK=True
     i2c = NosI2C()
     bus = PCF8574(0x20,i2c=i2c)
+    state = bus.get_state()
+    print(state)

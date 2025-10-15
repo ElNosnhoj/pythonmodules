@@ -30,6 +30,11 @@ pip uninstall pcf8574
 ## Usage
 ```python
 from pcf8574 import PCF8574
+from i2c import NosI2C()
+i2c = NosI2C()
+bus = PCF8574(0x20,i2c=i2c)
+state = bus.get_state()
+print(state)
 ```
 
 
