@@ -1,5 +1,5 @@
 # pythonmodules
-
+```
 my-multi-lib-repo/
 ├─ package_a/
 │   ├─ setup.py
@@ -31,7 +31,6 @@ via local clone
 git clone git@github.com:username/my-multi-lib-repo.git
 pip install ./my-multi-lib-repo/package_a
 
-
 ie setup.py
 # package_b/setup.py
 from setuptools import setup, find_packages
@@ -45,7 +44,4 @@ setup(
         "numpy"
     ],
 )
-
-
-
-
+```
