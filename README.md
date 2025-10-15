@@ -19,7 +19,9 @@ my-multi-lib-repo/
 └─ README.md
 ```
 via https
-```pip install git+https://github.com/username/my-multi-lib-repo.git@main#egg=package_a&subdirectory=package_a```
+```
+pip install git+https://github.com/username/my-multi-lib-repo.git@main#egg=package_a&subdirectory=package_a
+```
 
 via https with token
 pip install git+https://<token>@github.com/username/my-multi-lib-repo.git@main#egg=package_a&subdirectory=package_a
