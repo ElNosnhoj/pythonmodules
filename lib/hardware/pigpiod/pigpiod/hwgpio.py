@@ -5,6 +5,7 @@
 #===================================================================
 import asyncio
 import threading
+from typing import Literal
 
 # Try importing real gpiod; fallback to mock if not available
 try:
@@ -27,7 +28,7 @@ except ImportError:
 class HWGPIO:
     MOCK = not HAS_GPIOD
 
-    def __init__(self, gpio_offset:int, direction="in", bias=Bias.DISABLED, chip_path="/dev/gpiochip0"):
+    def __init__(self, gpio_offset:int, direction="in",  bias: Literal[None, "pull_up", "pull_down"] = None, active_low=False, chip_path="/dev/gpiochip0"):
         self.gpio_offset = gpio_offset
         self.gpio = gpio_offset
         self.direction = direction
@@ -36,12 +37,17 @@ class HWGPIO:
         self.request = None
         self.chip_path = chip_path
 
+        if bias == None: bias = Bias.DISABLED
+        elif bias == "pull_up": bias= Bias.PULL_UP
+        elif bias == "pull_down": bias= Bias.PULL_DOWN
+
         if not HWGPIO.MOCK:
             try:
                 cfg = gpiod.LineSettings(
                     direction=Direction.OUTPUT if direction=="out" else Direction.INPUT,
                     output_value=Value.INACTIVE,
-                    bias=bias
+                    bias=bias,
+                    active_low=active_low
                 )
                 self.request = gpiod.request_lines(
                     chip_path,
@@ -124,6 +130,7 @@ class HWGPIO_MONITOR:
                     for cb in pin.callbacks:
                         cb(pin)
             await asyncio.sleep(cls.poll_interval)
+
 
 
 if __name__ == "__main__":
