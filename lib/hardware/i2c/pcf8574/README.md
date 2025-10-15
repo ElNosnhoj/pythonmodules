@@ -9,12 +9,12 @@ https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/i2c
 ## Installation
 via ssh
 ```
-pip install "git+ssh://git@github.com/ElNosnhoj/pythonmodules.git@main#egg=i2c&subdirectory=lib/hardware/i2c/pcf8574"
+pip install "git+ssh://git@github.com/ElNosnhoj/pythonmodules.git@main#egg=pcf8574&subdirectory=lib/hardware/i2c/pcf8574"
 ```
 
 via https
 ```
-pip install "git+https://github.com/ElNosnhoj/pythonmodules.git@main#egg=i2c&subdirectory=lib/hardware/i2c/pcf8574"
+pip install "git+https://github.com/ElNosnhoj/pythonmodules.git@main#egg=pcf8574&subdirectory=lib/hardware/i2c/pcf8574"
 ```
 
 via local clone
