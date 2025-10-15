@@ -24,17 +24,24 @@ pip install git+https://github.com/username/my-multi-lib-repo.git@main#egg=packa
 ```
 
 via https with token
+```
 pip install git+https://<token>@github.com/username/my-multi-lib-repo.git@main#egg=package_a&subdirectory=package_a
+```
 
 via ssh
+```
 pip install git+ssh://git@github.com/username/my-multi-lib-repo.git@main#egg=package_a&subdirectory=package_a
+```
 
 via local clone
+```
 git clone git@github.com:username/my-multi-lib-repo.git
 pip install ./my-multi-lib-repo/package_a
+```
 
 ie setup.py
 # package_b/setup.py
+```
 from setuptools import setup, find_packages
 
 setup(
@@ -46,4 +53,6 @@ setup(
         "numpy"
     ],
 )
+```
+
 
