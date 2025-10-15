@@ -1,5 +1,11 @@
 # hardware/i2c/pcf8574
 
+## Requirements
+needs i2c library. look at 
+```
+https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/i2c
+```
+
 ## Installation
 via ssh
 ```
