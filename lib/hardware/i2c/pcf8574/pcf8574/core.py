@@ -23,7 +23,7 @@ if not _HAS_I2C:
 
 
 class PCF8574(NosI2CDevice):
-    MOCK = _HAS_I2C
+    MOCK = not _HAS_I2C
     __max_p = 7
     def __init__(self, addr=0x20, **kwargs):
         self.__mock = 0xff
