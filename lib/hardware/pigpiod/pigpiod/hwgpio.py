@@ -28,7 +28,7 @@ except ImportError:
 class HWGPIO:
     MOCK = not HAS_GPIOD
 
-    def __init__(self, gpio_offset:int, direction="in",  bias: Literal[None, "pull_up", "pull_down"] = None, active_low=False, chip_path="/dev/gpiochip0"):
+    def __init__(self, gpio_offset:int, direction:Literal["in","out"]="in",  bias: Literal[None, "pull_up", "pull_down"] = None, active_low=False, chip_path="/dev/gpiochip0"):
         self.gpio_offset = gpio_offset
         self.gpio = gpio_offset
         self.direction = direction
