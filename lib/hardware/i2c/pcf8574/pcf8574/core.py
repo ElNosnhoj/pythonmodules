@@ -1,5 +1,5 @@
 #===================================================================
-# file: PCF8574.py
+# PCF8574
 # desc: I2C io expansion has interrupt pin but not handled yet
 #===================================================================
 from typing import Union
