@@ -25,14 +25,19 @@ if not _HAS_I2C:
 class PCF8574(NosI2CDevice):
     MOCK = not _HAS_I2C
     __max_p = 7
-    def __init__(self, addr=0x20, **kwargs):
+    def __init__(self, addr:int=0x20, invert:bool=False, **kwargs):
         self.__mock = 0xff
+        self.__invert = invert
         if PCF8574.MOCK: return
         super().__init__(addr, **kwargs)
 
     def read_byte(self):
-        return self.__mock if PCF8574.MOCK else super().read_byte()
+        res = self.__mock if PCF8574.MOCK else super().read_byte()
+        if self.__invert: res= res ^ 0xff
+        return res
+
     def write_byte(self, value:int):
+        if self.__invert: value = value ^ 0xff
         if PCF8574.MOCK: self.__mock = value & 0xff
         else: super().write_byte(value)
 
