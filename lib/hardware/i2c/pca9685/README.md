@@ -1,6 +1,6 @@
 # lib/hardware/i2c/pca9685
 
-Interface PCF8574 I2C IO expander.
+16-channel 12-bit PWM controller over I2C
 
 ## Requirements
 needs i2c library. look at 
