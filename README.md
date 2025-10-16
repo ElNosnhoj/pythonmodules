@@ -6,11 +6,6 @@ Just my collection of modules
 links to modules 
 
 ## hardware related
-[i2c](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/i2c "")
-
-[pcf8574 - I2C IO Expander](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/pcf8574 "")
-
-[pigpiod - rpi5 io via gpiod](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/pigpiod "")
-
-
-
+[i2c](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/i2c "")<br>
+[pcf8574 - I2C IO Expander](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/pcf8574 "")<br>
+[pigpiod - rpi5 io via gpiod](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/pigpiod "")<br>
