@@ -47,7 +47,7 @@ class PCF8591(NosI2CDevice):
         value = max(0, min(255, int(value)))
         self.i2c.write_byte_data(self.addr, 0x40, value)
 
-    def read_analog(self, ch: int) -> int:
+    def get_analog(self, ch: int) -> int:
         """
         Read ADC value from a given channel.
 
@@ -80,10 +80,30 @@ class PCF8591(NosI2CDevice):
         Returns:
             float: Voltage corresponding to ADC value.
         """
-        assert 0 <= ch <= 3, "Channel must be 0–3"
-        adc_val = self.read_analog(ch)
+        adc_val = self.get_analog(ch)
         voltage = adc_val * self.vref / 255
         return round(voltage, r)
+    
+    def get_percent(self, ch: int, r: int = 1) -> float:
+        """
+        Convert ADC reading to a percentage of the reference voltage.
+
+        Args:
+            ch (int): ADC channel (0–3).
+            r (int): Number of decimal places to round (default 2).
+
+        Returns:
+            float: ADC value as percentage of vref (0–100%).
+        """
+        # Get voltage from ADC channel
+        voltage = self.get_voltage(ch, r + 2)
+
+        # Convert to percentage of vref
+        percent = (voltage / self.vref) * 100
+
+        # Round to requested precision
+        return round(percent, r)
+
 
     def set_voltage(self, volt: float) -> None:
         """
