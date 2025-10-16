@@ -1,20 +1,22 @@
-# hardware/i2c/i2c
+# lib/hardware/i2c/i2c
 
 ## Installation
-via ssh
-```
-pip install "git+ssh://git@github.com/ElNosnhoj/pythonmodules.git@main#egg=i2c&subdirectory=lib/hardware/i2c/i2c"
-```
-
 via https
 ```
-pip install "git+https://github.com/ElNosnhoj/pythonmodules.git@main#egg=i2c&subdirectory=lib/hardware/i2c/i2c"
+pip install git+https://github.com/ElNosnhoj/pythonmodules.git@main#subdirectory=lib/hardware/i2c/i2c
 ```
 
-via local clone
+via ssh
 ```
-pip install "<path_to_repo>/pythonmodules/lib/hardware/i2c/i2c"
+pip install git+ssh://git@github.com:ElNosnhoj/pythonmodules.git@main#subdirectory=lib/hardware/i2c/i2c
+
 ```
+
+via local
+```
+pip install <path>/pythonmodules/lib/hardware/i2c/i2c
+```
+
 
 to uninstall
 ```

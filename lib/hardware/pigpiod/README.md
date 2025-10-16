@@ -1,21 +1,21 @@
-# hardware/pigpiod
+# lib/hardware/pigpiod
 
 Control Raspberry Pi GPIO using gpiod with optional mock support for testing.
 
 ## Installation
-via ssh
-```
-pip install "git+ssh://git@github.com/ElNosnhoj/pythonmodules.git@main#egg=pigpiod&subdirectory=lib/hardware/pigpiod"
-```
-
 via https
 ```
-pip install "git+https://github.com/ElNosnhoj/pythonmodules.git@main#egg=pigpiod&subdirectory=lib/hardware/pigpiod"
+pip install git+https://github.com/ElNosnhoj/pythonmodules.git@main#subdirectory=lib/hardware/pigpiod
 ```
 
-via local clone
+via ssh
 ```
-pip install "<path_to_repo>/pythonmodules/lib/hardware/pigpiod"
+pip install git+ssh://git@github.com:ElNosnhoj/pythonmodules.git@main#subdirectory=lib/hardware/pigpiod
+```
+
+via local
+```
+pip install <path>/pythonmodules/lib/hardware/pigpiod
 ```
 
 uninstall

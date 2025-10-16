@@ -1,4 +1,6 @@
-# hardware/i2c/pcf8574
+# lib/hardware/i2c/pcf8574
+
+Interface PCF8574 I2C IO expander.
 
 ## Requirements
 needs i2c library. look at 
@@ -7,19 +9,19 @@ https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/i2c
 ```
 
 ## Installation
-via ssh
-```
-pip install "git+ssh://git@github.com/ElNosnhoj/pythonmodules.git@main#egg=pcf8574&subdirectory=lib/hardware/i2c/pcf8574"
-```
-
 via https
 ```
-pip install "git+https://github.com/ElNosnhoj/pythonmodules.git@main#egg=pcf8574&subdirectory=lib/hardware/i2c/pcf8574"
+pip install git+https://github.com/ElNosnhoj/pythonmodules.git@main#subdirectory=lib/hardware/i2c/pcf8574
 ```
 
-via local clone
+via ssh
 ```
-pip install "<path_to_repo>/pythonmodules/lib/hardware/i2c/pcf8574"
+pip install git+ssh://git@github.com:ElNosnhoj/pythonmodules.git@main#subdirectory=lib/hardware/i2c/pcf8574
+```
+
+via local
+```
+pip install <path>/pythonmodules/lib/hardware/i2c/pcf8574
 ```
 
 uninstall

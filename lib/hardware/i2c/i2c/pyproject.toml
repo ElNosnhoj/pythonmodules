@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "i2c"
+version = "0.1.0"
+description = "I2C interface helpers and device wrapper for Linux"
+authors = [
+    { name = "nos" },
+]
+requires-python = ">=3.7"
+
+dependencies = [
+    "smbus2"
+]

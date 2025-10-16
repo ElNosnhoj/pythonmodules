@@ -14,13 +14,3 @@ dependencies = [
     "gpiod; sys_platform == 'linux'",
     "asyncio",
 ]
-
-# If you have a README.md, uncomment the next line:
-readme = "README.md"
-
-# Optional classifiers for PyPI metadata (nice to have)
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: POSIX :: Linux",
-    "License :: OSI Approved :: MIT License",
-]
