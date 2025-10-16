@@ -35,8 +35,9 @@ basic
 ```python
 from pigpiod import HWGPIO
 pin5 = HWGPIO(5, "out")
+input("Press Enter to turn on...")
 pin5.state=1
-input("")
+input("Press Enter to turn off...")
 pin5.state=0
 ```
 
@@ -44,19 +45,11 @@ monitor
 ```python
 from pigpiod import HWGPIO, HWGPIO_MONITOR
 HWGPIO_MONITOR.start()
+p = HWGPIO(21,"in", "pull_up")
 
-pin5 = HWGPIO(5, "out")
-pin14 = HWGPIO(14,"in")
+def callback(p:HWGPIO):
+    print(f"gpio{p.gpio} changed to {p.state}")
 
-def sensor_cb(p:HWGPIO): 
-    pin5.state=p.state
-def hello(p:HWGPIO):
-    print("hello")
-
-HWGPIO_MONITOR.add_listener(pin14, sensor_cb)
-
-input("Press Enter to turn on...")
-pin5.state=1
-input("Press Enter to turn off...")
-pin5.state=0
+HWGPIO_MONITOR.add_listener(p, callback)
+input("enter to exit")
 ```
