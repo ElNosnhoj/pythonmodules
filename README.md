@@ -2,12 +2,15 @@
 
 Just my collection of modules
 
-## module hyperlinks
+# module hyperlinks
 links to modules 
-### hardware related
-[Named Link](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/i2c "i2c")
-[Named Link](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/pcf8574 "pcf8574 - I2C IO Expander")
-[Named Link](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/pigpiod "pigpiod - rpi5 io via gpiod")
+
+## hardware related
+[i2c](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/i2c "")
+
+[pcf8574 - I2C IO Expander](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/i2c/pcf8574 "")
+
+[pigpiod - rpi5 io via gpiod](https://github.com/ElNosnhoj/pythonmodules/tree/main/lib/hardware/pigpiod "")
 
 
 
