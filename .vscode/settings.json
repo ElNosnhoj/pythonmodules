@@ -1,0 +1,18 @@
+{
+    "files.exclude": {
+        "**/.env": true,
+        "**/dist": true,
+        "**/__pycache__": true,
+        "**/.vscode": true,
+        "**/.devcontainer": true,
+        "logs": true,
+        "docker-compose.yml": true,
+        "Dockerfile": true,
+        "*tempCodeRunnerFile*": true,
+        "rebooter.py": true,
+        "requirements.txt": true,
+        ".gitignore": true,
+        "**/*.egg-info/": true,
+        "**/build/": true
+    },
+}
