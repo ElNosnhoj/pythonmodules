@@ -9,21 +9,8 @@ from i2c import NosI2CDevice, NosI2C
 # byte &= ~(1 << p)   # low
 # byte ^= 1 << p      # toggle
 
-# mock detector
-try:
-    from smbus2 import SMBus
-    import os
-    _HAS_I2C = os.path.exists("/dev/i2c-1")
-except ImportError:
-    print("!![PCF8574] smbus2 not installed. FORCING MOCK")
-    _HAS_I2C = False
-
-if not _HAS_I2C:
-    print("!![PCF8574] System has no i2c-1 support. FORCING MOCK")
-
-
 class PCF8574(NosI2CDevice):
-    MOCK = not _HAS_I2C
+    MOCK = not NosI2C.HAS_I2C
     __max_p = 7
     def __init__(self, addr:int=0x20, invert:bool=False, **kwargs):
         self.__mock = 0xff
@@ -46,20 +33,6 @@ class PCF8574(NosI2CDevice):
         b = self.read_byte()
         return [(b >> i) & 1 == 1 for i in range(8)] if p==None else bool(b&1<<p)
 
-    # def set_state(self, p:int, value:Union[int,bool]):
-    #     assert p in range(8)
-    #     byte = self.read_byte()
-
-    #     if isinstance(value,int):
-    #         value = value & 0xff
-    #         if value==byte: return
-    #         self.write_byte(value)
-    #     elif isinstance(value,bool):
-    #         if bool(byte&1<<p) == value: return
-    #         if value: byte |= 1 << p
-    #         else: byte &= ~(1 << p) 
-    #         self.write_byte(byte)
-    
     def set_state(self, p:int, value:bool):
         assert p in range(8)
         value = bool(value)

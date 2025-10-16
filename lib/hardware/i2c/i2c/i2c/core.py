@@ -10,7 +10,20 @@
 from typing import List, Union
 import smbus2
 
+try:
+    from smbus2 import SMBus
+    import os
+    _HAS_I2C = os.path.exists("/dev/i2c-1")
+except ImportError:
+    print("!![i2c] smbus2 not installed")
+    _HAS_I2C = False
+
+if not _HAS_I2C:
+    print("!![i2c] System has no i2c-1 support")
+
+
 class NosI2C(smbus2.SMBus):
+    HAS_I2C = _HAS_I2C
     class NO_ADDR_PROVIDED(Exception):pass
 
     @classmethod

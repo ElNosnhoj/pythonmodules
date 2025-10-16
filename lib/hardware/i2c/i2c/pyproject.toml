@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "i2c"
-version = "0.1.0"
+version = "0.1.1"
 description = "I2C interface helpers and device wrapper for Linux"
 authors = [
     { name = "nos" },
