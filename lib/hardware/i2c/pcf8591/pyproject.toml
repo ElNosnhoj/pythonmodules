@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pcf8591"
+version = "0.1.0"
+description = "PCF8591 4-channel ADC + 1-channel DAC I2C module wrapper with optional mock support"
+authors = [
+    { name = "nos" },
+]
+requires-python = ">=3.7"
+
+dependencies = [
+    "i2c>=0.1.0",
+    "smbus2"
+]
