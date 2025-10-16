@@ -46,22 +46,34 @@ class PCF8574(NosI2CDevice):
         b = self.read_byte()
         return [(b >> i) & 1 == 1 for i in range(8)] if p==None else bool(b&1<<p)
 
-    def set_state(self, p:int, value:Union[int,bool]):
+    # def set_state(self, p:int, value:Union[int,bool]):
+    #     assert p in range(8)
+    #     byte = self.read_byte()
+
+    #     if isinstance(value,int):
+    #         value = value & 0xff
+    #         if value==byte: return
+    #         self.write_byte(value)
+    #     elif isinstance(value,bool):
+    #         if bool(byte&1<<p) == value: return
+    #         if value: byte |= 1 << p
+    #         else: byte &= ~(1 << p) 
+    #         self.write_byte(byte)
+    
+    def set_state(self, p:int, value:bool):
         assert p in range(8)
+        value = bool(value)
         byte = self.read_byte()
 
-        if isinstance(value,int):
-            value = value & 0xff
-            if value==byte: return
-            self.write_byte(value)
-        elif isinstance(value,bool):
-            if bool(byte&1<<p) == value: return
-            if value: byte |= 1 << p
-            else: byte &= ~(1 << p) 
-            self.write_byte(byte)
+        value = value & 0xff
+        if value==byte: return
+        self.write_byte(value)
+
+    
+
 
 if __name__ == "__main__":
-    PCF8574.MOCK=True
+    PCF8574.MOCK=False
     i2c = NosI2C()
     bus = PCF8574(0x20,i2c=i2c)
     state = bus.get_state()

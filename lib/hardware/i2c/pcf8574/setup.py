@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pcf8574",
-    version="0.1.2",
+    version="0.1.3",
     packages=find_packages(),
     install_requires=[
         "i2c>=0.1.0",  # your i2c package
