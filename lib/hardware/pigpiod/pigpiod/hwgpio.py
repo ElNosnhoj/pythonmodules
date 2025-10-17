@@ -47,6 +47,7 @@ class HWGPIO:
         direction: Literal["in", "out"] = "in",
         bias: Optional[Literal["pull_up", "pull_down"]] = None,
         active_low: bool = False,
+        out_cb: Callable[['HWGPIO'], None] = None,
         chip_path: str = "/dev/gpiochip0"
     ):
         """
@@ -69,6 +70,7 @@ class HWGPIO:
         self._state: bool = False
         self.callbacks: List[Callable[['HWGPIO'], None]] = []
         self.request = None
+        self.out_cb: Callable[['HWGPIO'], None] =out_cb
         self.chip_path: str = chip_path
 
         # Convert bias string to gpiod enum
@@ -135,6 +137,7 @@ class HWGPIO:
         self._state = val  # update internal state
 
         # Trigger callbacks
+        if self.out_cb: self.out_cb(self)
         for cb in self.callbacks:
             cb(self)
 
