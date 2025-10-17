@@ -58,6 +58,7 @@ class HWGPIO:
             direction (str): "in" or "out".
             bias (str | None): Optional pull-up/pull-down bias; None = disabled.
             active_low (bool): If True, logic is inverted.
+            out_cb (Callable): fire a callback on setting state
             chip_path (str): Path to GPIO chip device.
 
         Notes:
