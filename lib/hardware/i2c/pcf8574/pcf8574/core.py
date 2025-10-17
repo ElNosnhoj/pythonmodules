@@ -74,6 +74,7 @@ class PCF8574(NosI2CDevice):
             self.__mock = value & 0xFF
         else:
             super().write_byte(value)
+    byte = property(read_byte, write_byte)
 
     def get_state(self, p: Union[int, None] = None) -> Union[List[bool], bool]:
         """
@@ -127,6 +128,8 @@ class PCF8574(NosI2CDevice):
         # Only write if the value actually changed
         if byte != self.read_byte():
             self.write_byte(byte)
+
+    state = property(get_state, set_state)
 
 
 if __name__ == "__main__":
