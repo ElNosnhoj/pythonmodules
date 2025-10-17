@@ -129,7 +129,7 @@ class PCF8574(NosI2CDevice):
         if byte != self.read_byte():
             self.write_byte(byte)
 
-    state = property(get_state, set_state)
+    # state = property(get_state, set_state)
 
 
 if __name__ == "__main__":
