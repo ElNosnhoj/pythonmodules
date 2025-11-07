@@ -76,9 +76,3 @@ def run(cmd, timeout=30):
 
     raise TimeoutError("Timed out waiting for elevated output")
 
-
-# Example usage
-if __name__ == "__main__":
-    for c in ["echo 'This is run from elevated ps1'", "echo 'hello'", "echo 'world'"]:
-        out, err = run(c)
-        print(out)
