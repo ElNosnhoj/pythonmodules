@@ -3,9 +3,9 @@ import sys
 import time
 import ctypes
 import subprocess
-import tempfile
 
-__temp_path = os.path.join(tempfile.gettempdir(), "run_elevated_ps.txt")
+__temp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "run_elevated_ps.txt")
+# __temp_path = os.path.join(tempfile.gettempdir(), "run_elevated_ps.txt")
 def run(cmd, timeout=30):
     """
     Runs the given PowerShell command as Administrator (hidden) and waits
@@ -68,7 +68,8 @@ def run(cmd, timeout=30):
             else:
                 out, err = content, ""
             try:
-                os.remove(__temp_path)
+                # os.remove(__temp_path)
+                pass
             except FileNotFoundError:
                 pass
             return out, err
