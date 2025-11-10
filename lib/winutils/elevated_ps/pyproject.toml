@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "elevated_ps"
-version = "0.1.2"
+version = "0.1.3"
 description = "Windows utility helpers for Python, including elevated PowerShell execution"
 authors = [
     { name = "nos" }
