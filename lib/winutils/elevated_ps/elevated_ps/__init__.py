@@ -4,9 +4,9 @@ import time
 import ctypes
 import subprocess
 
-__temp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "run_elevated_ps.txt")
+default_temp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "run_elevated_ps.txt")
 # __temp_path = os.path.join(tempfile.gettempdir(), "run_elevated_ps.txt")
-def run(cmd, timeout=30):
+def run(cmd, timeout=30, temp_path = default_temp_path):
     """
     Runs the given PowerShell command as Administrator (hidden) and waits
     for the output file. Returns (stdout, stderr).
@@ -35,7 +35,7 @@ def run(cmd, timeout=30):
         r = subprocess.run(_cmd, capture_output=True, text=True, startupinfo=si)
 
         # Write stdout, stderr, and timestamp to temp file
-        with open(__temp_path, "w", encoding="utf-8") as f:
+        with open(temp_path, "w", encoding="utf-8") as f:
             # f.write(f"cmd: {cmd}\n")
             # f.write(f"Timestamp: {time.time()}\n")
             f.write(r.stdout + "\n----- STDERR -----\n" + r.stderr)
@@ -43,7 +43,7 @@ def run(cmd, timeout=30):
 
     # Parent branch
     try:
-        os.remove(__temp_path)
+        os.remove(temp_path)
     except FileNotFoundError:
         pass
 
@@ -58,8 +58,8 @@ def run(cmd, timeout=30):
     # Wait for temp file to appear
     start = time.time()
     while time.time() - start < timeout:
-        if os.path.exists(__temp_path):
-            with open(__temp_path, encoding="utf-8") as f:
+        if os.path.exists(temp_path):
+            with open(temp_path, encoding="utf-8") as f:
                 content = f.read()
             if "----- STDERR -----" in content:
                 out, err = content.split("----- STDERR -----", 1)
