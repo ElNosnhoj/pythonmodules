@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pipwm"
+version = "0.1.4"
+description = "Raspberry Pi hardware PWM control"
+requires-python = ">=3.8"
+authors = [
+    { name = "nos" },
+]
+dependencies = []
