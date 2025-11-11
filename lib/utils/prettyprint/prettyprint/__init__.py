@@ -93,6 +93,12 @@ if __name__ == "__main__":
 	print("Low disk space")
 	print("[ERROR]", fg="#ff4444", style=STYLE.BOLD, end=" ")
 	print("Failed to open configuration file")
+	print("✅ Success.", fg="#00ff00", style=STYLE.BOLD)
+	print("❌ Failed!", fg="#ff4444", style=STYLE.BOLD)
+	print("⚠️  Warning!", fg="#ffaa00")
+	print("🔧 Working ...", fg="#00ffff", style=STYLE.BOLD)
+
+
 	print()
 
 	print("Gradient", style=STYLE.BOLD | STYLE.UNDERLINE)
