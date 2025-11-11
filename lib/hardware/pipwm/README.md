@@ -3,7 +3,10 @@
 Control Raspberry Pi hardware PWM via sysfs.
 
 ## Prerequisite
-copy under [all] of /boot/firmware/config.txt and reboot
+copy under [all]
+```
+sudo nano /boot/firmware/config.txt
+```
 for ch to gpio 0:12,1:13 
 ```
 dtoverlay=pwm-2chan,pin=12,func=4,pin2=13,func2=4
