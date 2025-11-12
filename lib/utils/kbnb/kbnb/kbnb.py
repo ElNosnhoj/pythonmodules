@@ -1,21 +1,50 @@
 import os
 
+
+class __kb:
+    buffer = ""
+    @classmethod
+    def set_normal_term(cls): pass
+    @classmethod
+    def __ch(cls): return None
+    @classmethod
+    def get_ch(cls, blocking=False): 
+        if blocking: return cls.__ch()
+        else: return cls.__ch() if cls.hit() else None
+    @classmethod
+    def __arrow(cls): return None
+    @classmethod
+    def get_arrow(cls, blocking=False): 
+        if blocking: return cls.__arrow()
+        else: return cls.__arrow() if cls.hit() else None
+    @classmethod
+    def get_line(cls, blocking=False):
+        if blocking: 
+            while True:
+                if c:=kb.get_ch(True):
+                    if c in ['\r','\n']:
+                        out = cls.buffer
+                        cls.buffer=""
+                        return out
+                    cls.buffer+=c
+        elif c:=kb.get_ch():
+            if c in ['\r','\n']:
+                out = cls.buffer
+                cls.buffer=""
+                return out
+            cls.buffer+=c
+            return None
+
 # Windows
 if os.name == 'nt':
     import msvcrt
-    class kb:
+    class kb(__kb):
         @classmethod
-        def set_normal_term(cls): pass
+        def __ch(cls): return msvcrt.getch().decode('utf-8')
         @classmethod
-        def getch(cls): return msvcrt.getch().decode('utf-8')
+        def __arrow(cls): msvcrt.getch(); return [72, 77, 80, 75].index(ord(msvcrt.getch().decode('utf-8'))) # skip 0xE0
         @classmethod
-        def getarrow(cls):
-            msvcrt.getch() # skip 0xE0
-            c = msvcrt.getch()
-            vals = [72, 77, 80, 75]
-            return vals.index(ord(c.decode('utf-8')))
-        @classmethod
-        def kbhit(cls): return msvcrt.kbhit()
+        def hit(cls): return msvcrt.kbhit()
 
 # Posix (Linux, OS X)
 else:
@@ -30,33 +59,33 @@ else:
     new_term[3] = (new_term[3] & ~termios.ICANON & ~termios.ECHO)
     termios.tcsetattr(fd, termios.TCSAFLUSH, new_term)
 
-    class kb:
+    class kb(__kb):
         @classmethod
         def set_normal_term(cls): termios.tcsetattr(fd, termios.TCSAFLUSH, old_term)
         @classmethod
-        def getch(cls): return sys.stdin.read(1)
+        def __ch(cls): return sys.stdin.read(1)
         @classmethod
-        def getarrow(cls):
-            c = sys.stdin.read(3)[2]
-            vals = [65, 67, 66, 68]
-            return vals.index(ord(c.decode('utf-8')))
+        def __arrow(cls): return [65, 67, 66, 68].index(ord(sys.stdin.read(3)[2].encode('utf-8')))
         @classmethod
-        def kbhit(cls):
-            dr,dw,de = select([sys.stdin], [], [], 0)
-            return dr != []
-
-    
+        def hit(cls): return select([sys.stdin], [], [], 0)[0] != []
     atexit.register(kb.set_normal_term)
 
 
 if __name__ == "__main__":
+    print("ARROW KINDA JANKY")
+
+    print("Wait for any key nb")
+    while not kb.hit(): pass
+
+    print("Wait for specific key nb")
+    while kb.get_ch()!='\x1b': pass
+
+    print("Wait for line nb")
     while True:
-        if kb.kbhit():
-            c = kb.getch()
-            if ord(c) == 27: # ESC
-                break
-            print(c)
-             
-    kb.set_normal_term()
+        if line:=kb.get_line():
+            print(line)
+            break
+    
+
 
 
