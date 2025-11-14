@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "prettyprint"
-version = "0.1.2"
-description = "Printing with color!"
+name = "kbnb"
+version = "0.1.0"
+description = "Non blocking input"
 authors = [
     { name = "nos" }
 ]

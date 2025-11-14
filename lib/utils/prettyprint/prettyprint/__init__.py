@@ -93,6 +93,11 @@ if __name__ == "__main__":
 	print("Low disk space")
 	print("[ERROR]", fg="#ff4444", style=STYLE.BOLD, end=" ")
 	print("Failed to open configuration file")
+	print("✅ Success.", fg="#00ff00", style=STYLE.BOLD)
+	print("❌ Failed!", fg="#ff4444", style=STYLE.BOLD)
+	print("⚠️  Warning!", fg="#ffaa00")
+	print("🔧 Working ...", fg="#00ffff", style=STYLE.BOLD)
+	print("Press Enter to close ...", fg="#888888", style=STYLE.DIM)
 	print()
 
 	print("Gradient", style=STYLE.BOLD | STYLE.UNDERLINE)
@@ -119,3 +124,9 @@ if __name__ == "__main__":
 	for word, color in zip("RAINBOW", ["#ff0000","#ff7f00","#ffff00","#00ff00","#0000ff","#4b0082","#8b00ff"]):
 		print(word, fg=color, style=STYLE.BOLD, end="")
 	print()
+
+
+
+	# potentially useful icons
+	# 🚀🛸🪐🌌⭐🌠👽🤖☀️🌙🌧️⚡🌊🌸🍂🌈🔧🛠️⚙️🪓🪛🧰✈️🚁🚗🚲⛵🏍️🛶✅❌⚠️✖➡️⬆️🔁🎨🎸🎮🕹️🐉🧩🕯️
+	

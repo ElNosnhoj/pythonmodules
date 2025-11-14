@@ -3,12 +3,11 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "prettyprint"
-version = "0.1.2"
-description = "Printing with color!"
+name = "pipwm"
+version = "0.1.0"
+description = "Raspberry Pi hardware PWM control"
+requires-python = ">=3.8"
 authors = [
-    { name = "nos" }
+    { name = "nos" },
 ]
-requires-python = ">=3.7"
-
 dependencies = []
