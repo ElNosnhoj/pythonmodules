@@ -173,7 +173,7 @@ def _MOCK()-> None:
 
         def get_enable(self): return self.__en
         def set_enable(self, state:bool): 
-            if not self.__ex and state: raise RuntimeError("Cannot enable before export")
+            if not self.__ex: raise RuntimeError("Cannot enable before export")
             self.__en = bool(state)
         enable = property(get_enable, set_enable)
 
@@ -181,8 +181,7 @@ def _MOCK()-> None:
             return self.__period
 
         def set_period(self, per:int):
-            if self.__en:
-                raise RuntimeError("Cannot change period while enabled")
+            if not self.__ex: raise RuntimeError(f"PWM channel {self.ch} not exported")
             if per <= 0:
                 raise ValueError("Period must be > 0")
             self.__period = per
@@ -192,7 +191,7 @@ def _MOCK()-> None:
 
         def get_hz(self): return self.__hz
         def set_hz(self, hz:int): 
-            if self.__en: raise RuntimeError("Cannot change hz while enabled")
+            if not self.__ex: raise RuntimeError(f"PWM channel {self.ch} not exported")
             if hz <= 0: raise ValueError("Hz must be > 0")
             self.__hz = hz
             self.__period = int(1_000_000_000 / hz)
@@ -200,7 +199,6 @@ def _MOCK()-> None:
 
         def get_dc(self): return self.__dc
         def set_dc(self, dc:int): 
-            if self.__en: raise RuntimeError("Cannot change duty while enabled")
             if dc < 0: dc = 0
             elif dc > 100: dc = 100
             self.__dc = dc
