@@ -12,9 +12,9 @@ import time
 from typing import List, Optional
 
 # Default scan parameters
-DEFAULT_BASE = "192.168.5."
+DEFAULT_BASE = "192.168.137."
 DEFAULT_START = 2
-DEFAULT_END = 50
+DEFAULT_END = 254
 DEFAULT_TIMEOUT = 0.1     # seconds (100 ms)
 DEFAULT_CONCURRENCY = 300
 
