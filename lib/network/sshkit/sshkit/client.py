@@ -77,11 +77,3 @@ class Client(paramiko.SSHClient):
     hostname = property(get_hostname)
 
         
-
-if __name__ == "__main__":
-    client = Client("192.168.5.22", user="admin", pswd="handsome")
-    client.connect()
-    res = client.exec_parse("echo hello")
-    print(res)
-    print(client.hostname)
-    client.close()
