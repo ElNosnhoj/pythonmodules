@@ -1,20 +1,20 @@
-# lib/network/ssh
+# lib/network/sshkit
 ssh client. just wraps paramiko.
 
 ## Installation
 via https
 ```
-pip install git+https://github.com/ElNosnhoj/pythonmodules.git@main#subdirectory=lib/network/ssh
+pip install git+https://github.com/ElNosnhoj/pythonmodules.git@main#subdirectory=lib/network/sshkit
 ```
 
 via ssh
 ```
-pip install git+ssh://git@github.com:ElNosnhoj/pythonmodules.git@main#subdirectory=lib/network/ssh
+pip install git+ssh://git@github.com:ElNosnhoj/pythonmodules.git@main#subdirectory=lib/network/sshkit
 ```
 
 via local
 ```
-pip install <path>/pythonmodules/lib/network/ssh
+pip install <path>/pythonmodules/lib/network/sshkit
 ```
 
 uninstall
